@@ -1,0 +1,11 @@
+.app-root{
+  position: relative;
+  min-height: 100vh;
+}
+
+
+.app-root > main,
+.app-main{
+  position: relative;
+  z-index: 1;
+}
