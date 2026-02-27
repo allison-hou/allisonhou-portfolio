@@ -285,8 +285,8 @@ export default function Home() {
                   <span className="chip-text">GitHub</span>
                 </a>
 
-                <a className="social-chip" href="mailto:shunhsih@uci.edu">
-                  <img className="chip-icon" src={asset("assets/gmail-logo.jpg")} alt="Gmail" />
+                <a className="social-chip" href="mailto:shunhsih@uci.edu" target="_blank" rel="noopener">
+                  <img className="chip-icon" src={asset("assets/gmail-logo.jpg")} alt="Email" />
                   <span className="chip-text">Email</span>
                 </a>
 
