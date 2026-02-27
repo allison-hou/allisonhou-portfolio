@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Background from "./Background";
+import { asset } from "../utils/asset";
 
 export default function Layout() {
   return (
@@ -25,7 +26,7 @@ export default function Layout() {
               </a>
             </li>
           </ul>
-          <a className="navlink cta" href="/assets/resume.pdf">
+          <a className="navlink cta" href={asset("assets/resume.pdf")}>
             Resume
           </a>
         </nav>

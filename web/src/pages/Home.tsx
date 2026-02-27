@@ -120,7 +120,7 @@ export default function Home() {
                 items: [
                     { name: "HTML", icon: asset("assets/html-logo.png"), alt: "HTML icon" },
                     { name: "CSS", icon: asset("assets/css-logo.png"), alt: "CSS icon" },
-                    { name: "JavaScript", icon: asset("/assets/javascript-logo.png"), alt: "JavaScript icon" },
+                    { name: "JavaScript", icon: asset("assets/javascript-logo.png"), alt: "JavaScript icon" },
                 ],
                 },
                 {
