@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
+import { asset } from "../utils/asset";
 
 type Project = {
   title: string;
@@ -98,7 +99,7 @@ export default function Home() {
         <div className="hero-right">
           <div className="hero-right-wrap">
             <figure className="hero-right-tilt">
-              <img className="avatar" src="/assets/portrait.jpg" alt="Portrait photo of Allison Hou" />
+            <img className="avatar" src={asset("assets/portrait.jpg")} alt="Portrait photo of Allison Hou" />
               <figcaption className="caption">Irvine, CA · Taipei, Taiwan</figcaption>
             </figure>
           </div>
@@ -117,39 +118,38 @@ export default function Home() {
                 label: "FRONTEND",
                 dur: "18s",
                 items: [
-                    { name: "HTML", icon: "/assets/html-logo.png", alt: "HTML icon" },
-                    { name: "CSS", icon: "/assets/css-logo.png", alt: "CSS icon" },
-                    { name: "JavaScript", icon: "/assets/javascript-logo.png", alt: "JavaScript icon" },
+                    { name: "HTML", icon: asset("assets/html-logo.png"), alt: "HTML icon" },
+                    { name: "CSS", icon: asset("assets/css-logo.png"), alt: "CSS icon" },
+                    { name: "JavaScript", icon: asset("/assets/javascript-logo.png"), alt: "JavaScript icon" },
                 ],
                 },
                 {
                 label: "BACKEND",
                 dur: "20s",
                 items: [
-                    { name: "Java", icon: "/assets/java-logo.png", alt: "Java icon" },
-                    { name: "Python", icon: "/assets/python-logo.png", alt: "Python icon" },
-                    { name: "Dart(Flutter)", icon: "/assets/flutter-logo.jpg", alt: "Dart and Flutter icon" },
+                    { name: "Java", icon: asset("assets/java-logo.png"), alt: "Java icon" },
+                    { name: "Python", icon: asset("assets/python-logo.png"), alt: "Python icon" },
+                    { name: "Dart(Flutter)", icon: asset("assets/flutter-logo.jpg"), alt: "Dart and Flutter icon" },
                 ],
                 },
                 {
                 label: "DATABASE",
                 dur: "22s",
                 items: [
-                    { name: "MySQL", icon: "/assets/mysql-logo.png", alt: "MySQL icon" },
-                    { name: "Firebase", icon: "/assets/firebase-logo.svg", alt: "Firebase icon" },
+                    { name: "MySQL", icon: asset("assets/mysql-logo.png"), alt: "MySQL icon" },
+                    { name: "Firebase", icon: asset("assets/firebase-logo.svg"), alt: "Firebase icon" },
                 ],
                 },
                 {
                 label: "TOOLS",
                 dur: "18s",
                 items: [
-                    { name: "Git", icon: "/assets/git-logo.png", alt: "Git icon" },
-                    { name: "GitHub", icon: "/assets/github-logohome.png", alt: "GitHub icon" },
+                    { name: "Git", icon: asset("assets/git-logo.png"), alt: "Git icon" },
+                    { name: "GitHub", icon: asset("assets/github-logohome.png"), alt: "GitHub icon" },
                 ],
                 },
             ] as const
             ).map((row) => {
-            // 讓內容夠長：至少 14 個 chip，避免「跑完後空一大段」
             const minChips = 14;
             const repeat = Math.max(6, Math.ceil(minChips / row.items.length));
             const loopItems = Array.from(
@@ -276,12 +276,12 @@ export default function Home() {
               <p className="social-label">Primary</p>
               <div className="social-chips">
                 <a className="social-chip" href="http://www.linkedin.com/in/shun-hsin-hou-9811092ab" target="_blank" rel="noopener">
-                  <img className="chip-icon" src="/assets/linkedin-logo.png" alt="LinkedIn" />
+                  <img className="chip-icon" src={asset("assets/linkedin-logo.png")} alt="LinkedIn" />
                   <span className="chip-text">LinkedIn</span>
                 </a>
 
                 <a className="social-chip" href="https://github.com/allison-hou" target="_blank" rel="noopener">
-                  <img className="chip-icon" src="/assets/github-logo.png" alt="GitHub" />
+                  <img className="chip-icon" src={asset("assets/github-logo.png")} alt="GitHub" />
                   <span className="chip-text">GitHub</span>
                 </a>
 
