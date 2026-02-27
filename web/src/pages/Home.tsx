@@ -301,13 +301,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-
-            <div className="social-group">
-              <p className="social-label">Docs</p>
-              <div className="social-chips">
-              <a className="social-chip" href={asset("assets/resume.pdf")} target="_blank" rel="noopener">CV</a>
-              </div>
-            </div>
           </aside>
         </div>
 

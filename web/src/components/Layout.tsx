@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Background from "./Background";
 import { asset } from "../utils/asset";
 
@@ -11,17 +11,17 @@ export default function Layout() {
         <nav className="navwrap" aria-label="Primary">
           <ul className="navlist">
             <li>
-              <Link className="navlink" to="/">
+              <a className="navlink" href={asset("")} aria-current="page">
                 Home
-              </Link>
+              </a>
             </li>
             <li>
-              <Link className="navlink" to="/projects">
+              <a className="navlink" href={asset("projects")}>
                 Selected Work
-              </Link>
+              </a>
             </li>
             <li>
-              <a className="navlink" href="#contact">
+              <a className="navlink" href={`${asset("")}#contact`}>
                 Contact
               </a>
             </li>
