@@ -286,17 +286,17 @@ export default function Home() {
                 </a>
 
                 <a className="social-chip" href="mailto:shunhsih@uci.edu">
-                  <img className="chip-icon" src="/assets/gmail-logo.jpg" alt="Email" />
+                  <img className="chip-icon" src={asset("assets/gmail-logo.jpg")} alt="Gmail" />
                   <span className="chip-text">Email</span>
                 </a>
 
                 <a className="social-chip" href="https://www.instagram.com/ethereal__alliephoto" target="_blank" rel="noopener">
-                  <img className="chip-icon" src="/assets/ig-logo.jpg" alt="Instagram" />
+                  <img className="chip-icon" src={asset("assets/ig-logo.jpg")} alt="Instagram" />
                   <span className="chip-text">Instagram</span>
                 </a>
 
                 <a className="social-chip" href="https://pin.it/75JJ9DoY8" target="_blank" rel="noopener">
-                  <img className="chip-icon" src="/assets/pinterest-logo.avif" alt="Pinterest" />
+                  <img className="chip-icon" src={asset("assets/pinterest-logo.avif")} alt="Pinterest" />
                   <span className="chip-text">Pinterest</span>
                 </a>
               </div>
@@ -305,7 +305,7 @@ export default function Home() {
             <div className="social-group">
               <p className="social-label">Docs</p>
               <div className="social-chips">
-                <a className="social-chip" href="/assets/resume.pdf" target="_blank" rel="noopener">CV</a>
+              <a className="social-chip" href={asset("assets/resume.pdf")} target="_blank" rel="noopener">CV</a>
               </div>
             </div>
           </aside>
