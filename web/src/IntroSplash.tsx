@@ -15,20 +15,31 @@ type LetterFx = {
   rz: number;
 };
 
+function splitNameToTwoLines(raw: string) {
+  const parts = (raw || "").trim().split(/\s+/).filter(Boolean);
+  const first = parts[0] ?? "";
+  const last = parts.slice(1).join(" ");
+  return { first, last };
+}
+
 export default function IntroSplash({
   name = "ALLISON HOU",
   onDone,
 }: IntroSplashProps) {
   const [out, setOut] = useState(false);
 
-  const letters = useMemo(
-    () => name.split("").map((ch, i) => ({ ch, i })),
-    [name]
+  const { first, last } = useMemo(() => splitNameToTwoLines(name), [name]);
+  const firstChars = useMemo(() => first.split("").map((ch, i) => ({ ch, i })), [first]);
+  const lastChars = useMemo(
+    () => last.split("").map((ch, i) => ({ ch, i })),
+    [last]
   );
+
+  const totalChars = useMemo(() => firstChars.length + lastChars.length, [firstChars.length, lastChars.length]);
 
   const fx = useMemo<LetterFx[]>(
     () =>
-      name.split("").map((_, i) => {
+      Array.from({ length: totalChars }).map((_, i) => {
         const side = i % 4;
 
         const sx =
@@ -49,7 +60,7 @@ export default function IntroSplash({
 
         return { sx, sy, rz };
       }),
-    [name]
+    [totalChars]
   );
 
   useEffect(() => {
@@ -64,32 +75,43 @@ export default function IntroSplash({
     };
   }, [onDone]);
 
+  const renderRow = (items: Array<{ ch: string; i: number }>, globalOffset: number) => {
+    return items.map(({ ch, i }) => {
+      const isSpace = ch === " ";
+
+      const globalIndex = globalOffset + i;
+      const d = `${globalIndex * 35}ms`;
+      const { sx, sy, rz } = fx[globalIndex] ?? { sx: 0, sy: 0, rz: 0 };
+
+      const styleVars = {
+        ["--d" as any]: d,
+        ["--sx" as any]: `${sx}px`,
+        ["--sy" as any]: `${sy}px`,
+        ["--rz" as any]: `${rz}deg`,
+      } as React.CSSProperties;
+
+      return (
+        <span
+          key={`${ch}-${globalIndex}`}
+          className={`intro-letter ${isSpace ? "is-space" : ""}`}
+          style={styleVars}
+        >
+          {isSpace ? "\u00A0" : ch}
+        </span>
+      );
+    });
+  };
+
+  const LAST_OFFSET = firstChars.length + 2;
+
   return (
     <div className={`intro ${out ? "is-out" : ""}`}>
       <div className="intro-stage">
         <div className="intro-name" aria-label={name}>
-          {letters.map(({ ch, i }) => {
-            const isSpace = ch === " ";
-            const d = `${i * 35}ms`;
-            const { sx, sy, rz } = fx[i] ?? { sx: 0, sy: 0, rz: 0 };
-
-            const styleVars = {
-              ["--d" as any]: d,
-              ["--sx" as any]: `${sx}px`,
-              ["--sy" as any]: `${sy}px`,
-              ["--rz" as any]: `${rz}deg`,
-            } as React.CSSProperties;
-
-            return (
-              <span
-                key={`${ch}-${i}`}
-                className={`intro-letter ${isSpace ? "is-space" : ""}`}
-                style={styleVars}
-              >
-                {isSpace ? "\u00A0" : ch}
-              </span>
-            );
-          })}
+          <div className="intro-row intro-row--first">{renderRow(firstChars, 0)}</div>
+          {last.trim().length > 0 ? (
+            <div className="intro-row intro-row--last">{renderRow(lastChars, LAST_OFFSET)}</div>
+          ) : null}
         </div>
 
         <div className="intro-sub">Loading portfolio…</div>
