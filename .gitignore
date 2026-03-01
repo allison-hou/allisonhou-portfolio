@@ -1,1 +1,11 @@
 .DS_Store
+
+# build outputs
+web/dist/
+web/.vite/
+web/public/assets/index-*.css
+web/public/assets/index-*.js
+
+# old site folder
+_OLD_ROOT_SITE/
+
