@@ -2362,3 +2362,38 @@ body::-webkit-scrollbar{
     letter-spacing: clamp(0.6px, 0.22vw, 2px);
   }
 }
+
+.intro-stage{
+  width: min(1100px, 92vw);
+  max-width: 92vw;
+  overflow: visible;
+}
+
+.intro-name{
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+  overflow: visible;
+}
+
+.intro-row{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  overflow: visible;
+}
+
+.intro-letter{
+  display: inline-block;
+  max-width: 100%;
+}
+
+@media (max-width: 420px){
+  .intro-stage{ width: 94vw; padding: 28px 12px; }
+  .intro-letter{ letter-spacing: 2px; }
+}
