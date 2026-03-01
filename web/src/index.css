@@ -255,6 +255,8 @@ html{
   font-size: 100px;
   letter-spacing: 3px;
   text-shadow: 6px 6px 0 rgb(119, 94, 134);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .desc{
