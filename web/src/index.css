@@ -55,7 +55,7 @@ html, body {
     linear-gradient(180deg, rgba(0,0,0,.90), rgba(0,0,0,.65));
   transform: translateZ(0);
   filter: blur(var(--mesh-blur)) saturate(var(--mesh-sat)) !important;
-  will-change: transform; /* only transform */
+  will-change: transform;
 }
 
 
@@ -116,10 +116,8 @@ body{
   z-index: 0;
 }
 
-/* film grain + vignette (adds silver depth) */
 body::selection { background: rgba(180,170,255,0.35); }
 
-/* optional: subtle grain using multiple shadows (no image needed) */
 .page{
   position: relative;
 }
@@ -144,8 +142,6 @@ body::selection { background: rgba(180,170,255,0.35); }
   z-index: -1;
 }
 
-
-
 @keyframes moveBg{
   0%{ transform:translate(0,0) scale(1);}
   100%{ transform:translate(-8%,6%) scale(1.1);}
@@ -153,17 +149,14 @@ body::selection { background: rgba(180,170,255,0.35); }
 
 a{ color:inherit; text-decoration:none; }
 
-/* anchor offset for sticky topbar */
 :target{
   scroll-margin-top: 90px;
 }
 
-/* optional: smooth scroll */
 html{
   scroll-behavior: smooth;
 }
 
-/* topbar */
 .topbar{
   position: fixed;
   left: 0;
@@ -240,13 +233,11 @@ html{
   box-shadow: none;
 }
 
-/* page container */
-/* page container */
 .page{
   max-width: 1240px;
   margin: 0 auto;
   padding: 26px 24px 60px;
-  padding-top: 86px; /* reserve space for fixed topbar */
+  padding-top: 86px;
 }
 
 .kicker{
@@ -735,7 +726,6 @@ html{
   filter: saturate(1.05);
 }
 
-/* Responsive */
 @media (max-width: 900px){
   .hero{ grid-template-columns: 1fr; }
   .grid{ grid-template-columns: 1fr; }
@@ -805,7 +795,7 @@ html{
 @media (max-width: 520px){
   .page{
     padding: 16px 8px 44px;
-    padding-top: 86px; /* reserve space for fixed topbar on mobile */
+    padding-top: 86px;
   }
 
   .kicker{
@@ -830,7 +820,6 @@ html{
   }
 }
 
-/* ===== Projects Timeline ===== */
 .timeline{
   position: relative;
   margin-top: 0;
@@ -885,7 +874,6 @@ html{
   padding-top: 2px;
 }
 
-/* Projects Timeline */
 .t-card{
   min-height: 220px;
   padding: 18px 20px;
@@ -950,7 +938,6 @@ html{
   [id]{ scroll-margin-top: 110px; }
 }
 
-/* ===== Categorized Skills (single-line marquees) ===== */
 .skills-rows{
   display: grid;
   gap: 14px;
@@ -1072,7 +1059,6 @@ html{
   filter: saturate(1.02) contrast(1.02);
 }
 
-/* optional badge (only if you still render it) */
 .hero-badge{
   position: absolute;
   right: 14px;
@@ -1156,10 +1142,6 @@ html{
   padding-top: 10px;         
 }
 
-/* =========================
-   HERO FINAL OVERRIDE 
-   ========================= */
-
 .hero.hero-v2{
   display: flex;
   justify-content: center;
@@ -1169,13 +1151,12 @@ html{
   min-height: clamp(520px, 78vh, 820px);
 }
 
-/* one wide card */
 .hero-card{
   width: min(1240px, 96vw);
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1.22fr 0.78fr; /* give copy more room, photo less */
+  grid-template-columns: 1.22fr 0.78fr; 
   gap: clamp(22px, 2.6vw, 40px);
   align-items: stretch;
 
@@ -1192,7 +1173,6 @@ html{
   position: relative;
 }
 
-/* inner aura */
 .hero-card::before{
   content:"";
   position:absolute;
@@ -1215,20 +1195,13 @@ html{
 }
 .hero-card > *{ position: relative; z-index: 1; }
 
-/* ===== LEFT COPY LAYOUT ===== */
 .hero-card .hero-copy{
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  /* reserve space for kicker at the very top */
   padding-top: 38px;
-
-  /* push intro text block slightly down overall */
   gap: 20px;
-
-  /* avoid big empty space at bottom */
   padding-bottom: 6px;
 }
 
@@ -1246,12 +1219,10 @@ html{
   text-shadow: 0 2px 10px rgba(0,0,0,0.28);
 }
 
-/* title */
 .hero-card .title{
   margin: 0;
   line-height: 1.02;
 
-  /* center the “Allison Hou” text within the LEFT column only */
   width: 100%;
   text-align: center;
 }
@@ -1277,7 +1248,6 @@ html{
     0 14px 34px rgba(0,0,0,0.40);
 }
 
-/* caret like real typing */
 .hero-card .type-line::after{
   content:"";
   display:inline-block;
@@ -1299,7 +1269,7 @@ html{
 }
 
 .hero-card .desc{
-  margin: 14px 0 0; /* move paragraph down */
+  margin: 14px 0 0;
   font-size: 19px;
   line-height: 1.82;
   letter-spacing: 0.1px;
@@ -1315,7 +1285,6 @@ html{
   overflow: hidden;
   position: relative;
 
-  /* create an inner frame so the badge can sit in the gap */
   padding: 14px;
 
   background: rgba(255,255,255,0.06);
@@ -1323,7 +1292,6 @@ html{
   box-shadow: 0 18px 60px rgba(0,0,0,0.35);
 }
 
-/* Badge should NOT cover the photo: place it in the frame gap below the image */
 .hero-card .hero-media{
   display: grid;
   grid-template-rows: 1fr auto;
@@ -1337,9 +1305,7 @@ html{
   object-fit: cover;
   object-position: 50% 12%;
   filter: saturate(1.02) contrast(1.02);
-  border-radius: 22px; /* rounded inside the padded frame */
-
-  /* motion */
+  border-radius: 22px; 
   transition: transform 260ms ease, filter 260ms ease;
   will-change: transform;
 }
@@ -1361,7 +1327,6 @@ html{
   color: rgba(255,255,255,0.86);
 }
 
-/* ===== MOBILE ===== */
 @media (max-width: 920px){
   .hero.hero-v2{
     padding: 16px 5vw 18px;
@@ -1403,7 +1368,7 @@ html{
   
   .intro-name{
     display: inline-flex;
-    flex-wrap: nowrap;          /* prevent ALLISON / HOU splitting */
+    flex-wrap: nowrap;          
     justify-content: center;
     gap: 6px;
 
@@ -1411,8 +1376,8 @@ html{
     max-width: 100%;
 
     white-space: nowrap;
-    padding-inline: 12px;       /* prevent edge clipping on mobile */
-    overflow: visible;          /* allow glow/shadow without cropping */
+    padding-inline: 12px;       
+    overflow: visible;         
   }
   
   .intro-letter{
@@ -1476,7 +1441,6 @@ html{
     }
   }
 
-  /* intro name: ultra-small widths */
   @media (max-width: 420px){
     .intro-stage{ padding: 28px 16px; }
     .intro-name{ gap: 4px; }
@@ -1529,7 +1493,6 @@ html{
   gap: 10px;
 }
 
-/* ===== Projects FINAL: same card size + no scroll + no truncation ===== */
 :root{
   --project-card-h: 320px; 
 }
@@ -1540,7 +1503,7 @@ html{
 
 #projects .t-card{
   min-height: var(--project-card-h);
-  height: auto;                 /* 允許小螢幕自動長高 */
+  height: auto;               
   padding: 26px 28px;
 
   display: flex;
@@ -1966,7 +1929,7 @@ html::after,
 
 .contact-grid{
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr; /* 左稍大，右穩定 */
+  grid-template-columns: 1.15fr 0.85fr; 
   gap: 18px;
   align-items: stretch;
 }
@@ -2103,7 +2066,6 @@ html::after,
     border-radius: 6px;
   }
   
-
   @media (max-width: 900px){
     .contact-grid{
       grid-template-columns: 1fr;
@@ -2172,16 +2134,16 @@ html::after,
 }
 
 :root{
-  --project-card-h: 300px;    
-  --project-clamp: 5;        
+  --project-card-min-h: 300px;
 }
 
 #projects .t-card{
-  min-height: var(--project-card-h) !important;
+  min-height: var(--project-card-min-h) !important;
+  height: auto !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 12px !important;
-  overflow: hidden !important;        
+  overflow: visible !important; 
 }
 
 #projects .t-top{
@@ -2191,29 +2153,23 @@ html::after,
 #projects .t-body{
   flex: 1 1 auto !important;
   min-height: 0 !important;
+  overflow: visible !important;
 }
 
 #projects .t-bullets{
   margin: 0 !important;
   padding-left: 22px !important;
 
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
-  -webkit-line-clamp: var(--project-clamp) !important;
-
-  overflow: hidden !important;
+  display: block !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+  max-height: none !important;
+  overflow: visible !important;
 }
 
 @media (max-width: 680px){
-  #projects .t-card{
-    min-height: 0 !important;
-    overflow: visible !important;
-  }
-  #projects .t-bullets{
-    -webkit-line-clamp: unset !important;
-    overflow: visible !important;
-    display: block !important;
-  }
+  :root{ --project-card-min-h: 0px; }
+  #projects .t-card{ min-height: 0 !important; }
 }
 
 .navlink {
@@ -2367,5 +2323,30 @@ body::-webkit-scrollbar{
   .hero-card .title{
     font-size: clamp(46px, 10.5vw, 78px) !important;
     letter-spacing: 2px !important;
+  }
+}
+
+@media (max-width: 360px){
+  .intro-stage{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 26px 12px;
+  }
+
+  .intro-name{
+    padding-inline: 6px;
+    gap: 4px;
+  }
+
+  .intro-letter{
+    font-size: clamp(28px, 10.2vw, 90px);
+    letter-spacing: clamp(0.5px, 0.22vw, 2px);
+  }
+}
+
+@media (max-width: 330px){
+  .intro-letter{
+    font-size: clamp(24px, 10.5vw, 84px);
+    letter-spacing: clamp(0.3px, 0.18vw, 1.6px);
   }
 }
