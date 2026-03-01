@@ -1409,8 +1409,10 @@ html{
 
     width: 100%;
     max-width: 100%;
+
     white-space: nowrap;
-    overflow: hidden;
+    padding-inline: 12px;       /* prevent edge clipping on mobile */
+    overflow: visible;          /* allow glow/shadow without cropping */
   }
   
   .intro-letter{
@@ -1864,30 +1866,31 @@ html::after{
 
 .marquee{ --dur: 26s !important; } 
 
-.intro{
-  position: fixed;
-  inset: 0;
-  width: 100vw;  
-  height: 100vh; 
-  z-index: 9999;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  
-   
-  background:
-    radial-gradient(900px 700px at 30% 25%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(900px 700px at 70% 35%, rgba(139,92,246,.28), transparent 62%),
-    radial-gradient(900px 800px at 55% 85%, rgba(0,0,0,.55), transparent 70%),
-    linear-gradient(180deg, rgba(0,0,0,.94), rgba(0,0,0,.84));
-  
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  
-  opacity: 1;
-  transform: translateZ(0);
-  transition: opacity 520ms ease, transform 520ms ease;
-}
+  .intro{
+    position: fixed;
+    inset: 0;
+    width: 100vw;  
+    height: 100vh; 
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+     
+    background:
+      radial-gradient(900px 700px at 30% 25%, rgba(255,255,255,.10), transparent 60%),
+      radial-gradient(900px 700px at 70% 35%, rgba(139,92,246,.28), transparent 62%),
+      radial-gradient(900px 800px at 55% 85%, rgba(0,0,0,.55), transparent 70%),
+      linear-gradient(180deg, rgba(0,0,0,.94), rgba(0,0,0,.84));
+    
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    
+    opacity: 1;
+    transform: translateZ(0);
+    transition: opacity 520ms ease, transform 520ms ease;
+  }
   
 .intro:not(.is-out) ~ .page{
   opacity: 0;
@@ -2260,6 +2263,8 @@ body::-webkit-scrollbar{
 .t-card,
 .form,
 .social-card,
+.contact-card,
+.online-card,
 .bcard,
 .album-cover,
 .photo-thumb,
@@ -2290,6 +2295,8 @@ body::-webkit-scrollbar{
 .t-card:hover,
 .form:hover,
 .social-card:hover,
+.contact-card:hover,
+.online-card:hover,
 .bcard:hover,
 .online-chip:hover,
 .hero-card:hover{
@@ -2317,6 +2324,8 @@ body::-webkit-scrollbar{
   .t-card,
   .form,
   .social-card,
+  .contact-card,
+  .online-card,
   .bcard,
   .album-cover,
   .photo-thumb,
