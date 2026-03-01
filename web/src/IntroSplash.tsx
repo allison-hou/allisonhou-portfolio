@@ -29,6 +29,7 @@ export default function IntroSplash({
   const [out, setOut] = useState(false);
 
   const { first, last } = useMemo(() => splitNameToTwoLines(name), [name]);
+
   const firstChars = useMemo(() => first.split("").map((ch, i) => ({ ch, i })), [first]);
   const lastChars = useMemo(
     () => last.split("").map((ch, i) => ({ ch, i })),
