@@ -2350,3 +2350,15 @@ body::-webkit-scrollbar{
     letter-spacing: clamp(0.3px, 0.18vw, 1.6px);
   }
 }
+
+@media (max-width: 390px){
+  .intro-stage{ padding: 28px 14px; }
+  .intro-name{
+    gap: 4px;
+    padding-inline: 8px;
+  }
+  .intro-letter{
+    font-size: clamp(32px, 10vw, 96px);
+    letter-spacing: clamp(0.6px, 0.22vw, 2px);
+  }
+}
